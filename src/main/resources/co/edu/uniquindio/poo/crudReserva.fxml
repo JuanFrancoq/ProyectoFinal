@@ -79,14 +79,14 @@
                            </font>
                        </Label>
    
-                       <TextField fx:id="txt_CedulaCliente" layoutX="20.0" layoutY="60.0" promptText="Cédula Cliente" />
-                       <TextField fx:id="txt_NombreCliente" layoutX="150.0" layoutY="60.0" promptText="Nombre Cliente" />
-                       <TextField fx:id="txt_TelefonoCliente" layoutX="280.0" layoutY="60.0" promptText="Teléfono Cliente" />
-                       <TextField fx:id="txt_CorreoCliente" layoutX="410.0" layoutY="60.0" promptText="Correo Cliente" />
+                       <TextField fx:id="txt_Cedula" layoutX="20.0" layoutY="60.0" promptText="Cédula Cliente" />
+                       <TextField fx:id="txt_Nombre" layoutX="150.0" layoutY="60.0" promptText="Nombre Cliente" />
+                       <TextField fx:id="txt_Telefono" layoutX="280.0" layoutY="60.0" promptText="Teléfono Cliente" />
+                       <TextField fx:id="txt_Correo" layoutX="410.0" layoutY="60.0" promptText="Correo Cliente" />
    
-                       <Button fx:id="btn_CrearCliente" layoutX="550.0" layoutY="60.0" mnemonicParsing="false"  text="Crear Cliente" />
-                       <Button fx:id="btn_ActualizarCliente" layoutX="650.0" layoutY="60.0" mnemonicParsing="false"  text="Actualizar Cliente" />
-                       <Button fx:id="btn_EliminarCliente" layoutX="550.0" layoutY="100.0" mnemonicParsing="false" text="Eliminar Cliente" />
+                       <Button fx:id="btn_CrearCliente" layoutX="550.0" layoutY="60.0" mnemonicParsing="false" onAction="#agregarCliente" text="Crear Cliente" />
+                       <Button fx:id="btn_ActualizarCliente" layoutX="650.0" layoutY="60.0" mnemonicParsing="false" text="Actualizar Cliente" />
+                       <Button fx:id="btn_EliminarCliente" layoutX="550.0" layoutY="100.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar Cliente" />
    
                        <TableView fx:id="tbl_ListClientes" layoutX="20.0" layoutY="150.0" prefHeight="270.0" prefWidth="700.0">
                            <columns>

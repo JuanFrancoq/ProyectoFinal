@@ -2,8 +2,10 @@ package co.edu.uniquindio.poo.controller;
 
 import javafx.collections.ObservableList;
 import java.time.LocalDate;
+import java.util.Collection;
 
 import co.edu.uniquindio.poo.model.Cliente;
+import co.edu.uniquindio.poo.model.Empresa;
 import co.edu.uniquindio.poo.model.Reserva;
 import co.edu.uniquindio.poo.model.Vehiculo;
 
@@ -40,5 +42,26 @@ public class ReservaController {
 
     public ObservableList<Reserva> getReservas() {
         return reservas; // Permite acceder a la lista de reservas
+    }
+    Empresa empresa;
+
+    public ReservaController(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public boolean crearCliente(Cliente cliente) {
+        return empresa.agregarCliente(cliente);
+    }
+
+    public Collection<Cliente> obtenerListaClientes() {
+        return empresa.getClientes();
+    }
+
+    public boolean eliminarCliente(String cedula) {
+       return empresa.eliminarCliente(cedula);
+    }
+
+    public boolean actualizarCliente(String cedula, Cliente cliente) {
+       return empresa.actualizarCliente(cedula, cliente);
     }
 }
