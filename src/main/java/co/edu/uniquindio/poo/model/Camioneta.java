@@ -39,8 +39,8 @@ public class Camioneta extends Vehiculo {
      * @param capacidadToneladas
      * @return
      */
-    public double calcularTarifaCamioneta(int dias, double capacidadToneladas) {
-
+    @Override
+    public double calcularTarifa(int dias) {
         double tarifaBaseTotal = getTarifaBase() * dias;
         double porcentajeExtra = tarifaBaseTotal * (capacidadToneladas * 0.20);
         return tarifaBaseTotal + porcentajeExtra;

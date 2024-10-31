@@ -40,17 +40,12 @@ public class Moto extends Vehiculo {
      * @param tipoCaja
      * @return
      */
-
-    public double calcularTarifaMoto(int dias, TipoCaja tipoCaja) {
-
-        double costo = 0.0;
-
-        if (getTipoCaja() == TipoCaja.MANUAL) {
-            costo = getTarifaBase() * dias;
-        } else if (getTipoCaja() == TipoCaja.AUTOMATICA) {
-            costo = (getTarifaBase() * dias) + 50000;
-        } else {
-            costo = 0;
+    
+    @Override
+    public double calcularTarifa(int dias) {
+        double costo = getTarifaBase() * dias;
+        if (getTipoCaja() == TipoCaja.AUTOMATICA) {
+            costo += 50000;
         }
         return costo;
     }
@@ -61,7 +56,5 @@ public class Moto extends Vehiculo {
                 + modelo + ", anioFabricacion=" + anioFabricacion + ", TipoCaja=" + TipoCaja + ", tarifaBase="
                 + tarifaBase + "]";
     }
-
-    
 
 }

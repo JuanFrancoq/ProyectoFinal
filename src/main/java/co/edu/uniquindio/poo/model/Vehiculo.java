@@ -16,7 +16,6 @@ public abstract class Vehiculo {
      * @param tarifaBase
      */
 
-    
     public String getTipoVehiculo() {
         return tipoVehiculo;
     }
@@ -74,6 +73,8 @@ public abstract class Vehiculo {
     public void setTarifaBase(double tarifaBase) {
         this.tarifaBase = tarifaBase;
     }
+
+    public abstract double calcularTarifa(int dias);
 
     @Override
     public String toString() {

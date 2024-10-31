@@ -38,7 +38,7 @@ public class Auto extends Vehiculo {
      * @param dias
      * @return
      */
-    public double calcularTarifaAuto(int dias) {
+    public double calcularTarifa(int dias) {
         return getTarifaBase() * dias;
     }
 

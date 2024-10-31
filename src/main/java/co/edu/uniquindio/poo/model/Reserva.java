@@ -19,7 +19,7 @@ public class Reserva {
 
     private void calcularValorReserva() {
         int dias = (int) (fechaFin.toEpochDay() - fechaInicio.toEpochDay());
-        this.valorReserva = dias * vehiculo.getTarifaBase();
+        this.valorReserva = vehiculo.calcularTarifa(dias); // llama al método polimórfico
     }
 
     // Getters para cada propiedad que se necesita en la tabla
