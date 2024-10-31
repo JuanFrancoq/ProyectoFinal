@@ -10,7 +10,6 @@ import java.io.IOException;
 
 import co.edu.uniquindio.poo.model.Auto;
 import co.edu.uniquindio.poo.model.Camioneta;
-import co.edu.uniquindio.poo.model.Cliente;
 import co.edu.uniquindio.poo.model.Empresa;
 import co.edu.uniquindio.poo.model.Moto;
 import co.edu.uniquindio.poo.model.TipoCaja;
@@ -79,11 +78,6 @@ public class App extends Application {
      * Datos que se queman para las listas
      */
     public void inicializarData() {
-        /**
-         * clientes que se Visualizaran en el choiceBox
-         */
-        empresa.agregarCliente(new Cliente("1004870686", "Juan Franco", "juanj.francoq@uqvitual.edu.co", "3174875717"));
-
         /**
          * Vehiculos que se Visualizaran en el choiceBox
          */
