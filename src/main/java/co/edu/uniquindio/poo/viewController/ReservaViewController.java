@@ -118,7 +118,36 @@ public class ReservaViewController {
 
     @FXML
     private void actualizarReserva() {
-        System.out.println("Funcionalidad para actualizar la reserva aún no implementada.");
+        Reserva selectedReserva = tbl_ListReservas.getSelectionModel().getSelectedItem();
+        
+        if (selectedReserva != null) {
+            LocalDate fechaInicio = datePickerInicio.getValue();
+            LocalDate fechaFin = datePickerFin.getValue();
+            Cliente cliente = cb_Cliente.getValue();
+            Vehiculo vehiculo = cb_Modelo.getValue();
+    
+            if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
+                // Actualizar la reserva con los nuevos valores
+                selectedReserva.setFechaInicio(fechaInicio);
+                selectedReserva.setFechaFin(fechaFin);
+                selectedReserva.setCliente(cliente);
+                selectedReserva.setVehiculo(vehiculo);
+                
+                // Calcular los días entre las fechas
+                int dias = (int) (fechaFin.toEpochDay() - fechaInicio.toEpochDay());
+                
+                // Calcular el valor de la reserva usando el método del vehículo
+                double valorReserva = vehiculo.calcularTarifa(dias);
+                selectedReserva.setValorReserva(valorReserva);
+    
+                // Actualizar la tabla
+                tbl_ListReservas.refresh();
+            } else {
+                System.out.println("Por favor completa todos los campos.");
+            }
+        } else {
+            System.out.println("Seleccione una reserva para actualizar.");
+        }
     }
 
     @FXML

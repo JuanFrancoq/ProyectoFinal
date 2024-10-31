@@ -85,7 +85,7 @@
                        <TextField fx:id="txt_Correo" layoutX="410.0" layoutY="60.0" promptText="Correo Cliente" />
    
                        <Button fx:id="btn_CrearCliente" layoutX="550.0" layoutY="60.0" mnemonicParsing="false" onAction="#agregarCliente" text="Crear Cliente" />
-                       <Button fx:id="btn_ActualizarCliente" layoutX="650.0" layoutY="60.0" mnemonicParsing="false" text="Actualizar Cliente" />
+                       <Button fx:id="btn_ActualizarCliente" layoutX="650.0" layoutY="60.0" mnemonicParsing="false" onAction="#actualizarCliente" text="Actualizar Cliente" />
                        <Button fx:id="btn_EliminarCliente" layoutX="550.0" layoutY="100.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar Cliente" />
    
                        <TableView fx:id="tbl_ListClientes" layoutX="20.0" layoutY="150.0" prefHeight="270.0" prefWidth="700.0">
