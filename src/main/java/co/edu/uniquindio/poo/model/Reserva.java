@@ -9,6 +9,14 @@ public class Reserva {
     private Vehiculo vehiculo;
     private double valorReserva;
 
+    /**
+     * este es el constructor para la clase de Reserva
+     * @param fechaInicio
+     * @param fechaFin
+     * @param cliente
+     * @param vehiculo
+     */
+
     public Reserva(LocalDate fechaInicio, LocalDate fechaFin, Cliente cliente, Vehiculo vehiculo) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -16,6 +24,10 @@ public class Reserva {
         this.vehiculo = vehiculo;
         calcularValorReserva();
     }
+
+    /**
+     * método para calcular la cantidad de dias de una reserva
+     */
 
     private void calcularValorReserva() {
         int dias = (int) (fechaFin.toEpochDay() - fechaInicio.toEpochDay());

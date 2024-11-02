@@ -10,18 +10,23 @@ public class Cliente {
      * @param correo
      * @param telefono
      */
-
+    /**
+     * Este es el constructor para la clase Cliente
+     */
     public Cliente(String cedula, String nombre, String correo, String telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
     }
-
+    /**
+     * estos son los getters y setters de la clase Cliente
+     * @return
+     */
     public String getCedula() {
         return cedula;
     }
-
+    
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }

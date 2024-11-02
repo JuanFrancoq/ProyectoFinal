@@ -3,6 +3,7 @@ package co.edu.uniquindio.poo.viewController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,7 +38,8 @@ public class ReservaViewController {
     @FXML
     private TableView<Reserva> tbl_ListReservas;
     @FXML
-    private TableColumn<Reserva, String> tbc_Fecha, tbc_Cedula, tbc_Nombre, tbc_Telefono, tbc_TipoVehiculo, tbc_Marca, tbc_Modelo, tbc_Matricula;
+    private TableColumn<Reserva, String> tbc_Fecha, tbc_Cedula, tbc_Nombre, tbc_Telefono, tbc_TipoVehiculo, tbc_Marca,
+            tbc_Modelo, tbc_Matricula;
     @FXML
     private TableColumn<Reserva, Double> tbc_Valor;
     @FXML
@@ -75,6 +77,31 @@ public class ReservaViewController {
 
     // ---- Métodos para gestionar la vista de reservas ----
 
+    private void initView() {
+        // Traer los datos del cliente a la tabla
+        initDataBinding();
+
+        // Obtiene la lista
+        obtenerClientes();
+
+        // Limpiar la tabla
+        tbl_ListClientes.getItems().clear();
+
+        // Agregar los elementos a la tabla
+        tbl_ListClientes.setItems(listClientes);
+
+        // Seleccionar elemento de la tabla
+        listenerSelection();
+    }
+
+    private void initDataBinding() {
+        tbc_CedulaCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
+        tbc_NombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        tbc_CorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tbc_TelefonoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+        // Usamos SimpleObjectProperty para manejar Double y Integer correctamente
+    }
+
     private void initReservaView() {
         tbc_Fecha.setCellValueFactory(new PropertyValueFactory<>("fechaInicio"));
         tbc_Cedula.setCellValueFactory(new PropertyValueFactory<>("cedulaCliente"));
@@ -89,6 +116,19 @@ public class ReservaViewController {
         tbl_ListReservas.setItems(reservas);
     }
 
+    @FXML
+    private void Limpiar(ActionEvent event) {
+        // Tu código aquí
+    }
+
+    @FXML
+    private void limpiarReservas() {
+        reservas.clear(); // Limpia la lista de reservas
+        tbl_ListReservas.refresh(); // Refresca la tabla para mostrar los cambios
+    }
+    /**
+     * Método para crear la reservación luego de seleccionar los campos requeridos
+     */
     @FXML
     private void crearReserva() {
         LocalDate fechaInicio = datePickerInicio.getValue();
@@ -105,7 +145,9 @@ public class ReservaViewController {
             System.out.println("Por favor completa todos los campos");
         }
     }
-
+    /**
+     * Método para eliminar una reservación luego de seleccionarla
+     */
     @FXML
     private void eliminarReserva() {
         Reserva selectedReserva = tbl_ListReservas.getSelectionModel().getSelectedItem();
@@ -115,31 +157,33 @@ public class ReservaViewController {
             System.out.println("Seleccione una reserva para eliminar.");
         }
     }
-
+    /**
+     * Método para actualizar una reservación luego de seleccionarla 
+     */
     @FXML
     private void actualizarReserva() {
         Reserva selectedReserva = tbl_ListReservas.getSelectionModel().getSelectedItem();
-        
+
         if (selectedReserva != null) {
             LocalDate fechaInicio = datePickerInicio.getValue();
             LocalDate fechaFin = datePickerFin.getValue();
             Cliente cliente = cb_Cliente.getValue();
             Vehiculo vehiculo = cb_Modelo.getValue();
-    
+
             if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
                 // Actualizar la reserva con los nuevos valores
                 selectedReserva.setFechaInicio(fechaInicio);
                 selectedReserva.setFechaFin(fechaFin);
                 selectedReserva.setCliente(cliente);
                 selectedReserva.setVehiculo(vehiculo);
-                
+
                 // Calcular los días entre las fechas
                 int dias = (int) (fechaFin.toEpochDay() - fechaInicio.toEpochDay());
-                
+
                 // Calcular el valor de la reserva usando el método del vehículo
                 double valorReserva = vehiculo.calcularTarifa(dias);
                 selectedReserva.setValorReserva(valorReserva);
-    
+
                 // Actualizar la tabla
                 tbl_ListReservas.refresh();
             } else {
@@ -149,7 +193,9 @@ public class ReservaViewController {
             System.out.println("Seleccione una reserva para actualizar.");
         }
     }
-
+    /**
+     * Método para calcular el valor de la reservación
+     */
     @FXML
     private void calcularReserva() {
         LocalDate fechaInicio = datePickerInicio.getValue();
@@ -171,18 +217,19 @@ public class ReservaViewController {
         listClientes.setAll(clientes);
         cb_Cliente.setItems(listClientes);
     }
-    
+
     public void setVehiculos(ObservableList<Vehiculo> vehiculos) {
         cb_Modelo.setItems(vehiculos);
     }
-
+    //-----------------------------------------------------------------------------------------------------------------------------------------------------
     // ---- Métodos para gestionar la vista de clientes ----
 
     private void initClienteView() {
         tbc_CedulaCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
         tbc_NombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbc_CorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        tbc_TelefonoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
+        tbc_TelefonoCliente
+                .setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
 
         tbl_ListClientes.setItems(listClientes);
 

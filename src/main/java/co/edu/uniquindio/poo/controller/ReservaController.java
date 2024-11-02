@@ -17,6 +17,15 @@ public class ReservaController {
         this.reservas = reservas;
     }
 
+    /**
+     * Método para crear una reservación
+     * 
+     * @param fechaInicio
+     * @param fechaFin
+     * @param cliente
+     * @param vehiculo
+     * @return
+     */
     public boolean crearReserva(LocalDate fechaInicio, LocalDate fechaFin, Cliente cliente, Vehiculo vehiculo) {
         if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
             double tarifaBase = calcularValorReserva(fechaInicio, fechaFin);
@@ -27,10 +36,23 @@ public class ReservaController {
         return false; // No se pudo crear la reserva
     }
 
+    /**
+     * Método para eliminar una reservación
+     * 
+     * @param reserva
+     * @return
+     */
     public boolean eliminarReserva(Reserva reserva) {
         return reservas.remove(reserva); // Devuelve true si se eliminó correctamente
     }
 
+    /**
+     * Método para calcular el valor de una reservación
+     * 
+     * @param fechaInicio
+     * @param fechaFin
+     * @return
+     */
     public double calcularValorReserva(LocalDate fechaInicio, LocalDate fechaFin) {
         if (fechaInicio != null && fechaFin != null && fechaInicio.isBefore(fechaFin)) {
             long dias = fechaFin.toEpochDay() - fechaInicio.toEpochDay();
@@ -43,12 +65,19 @@ public class ReservaController {
     public ObservableList<Reserva> getReservas() {
         return reservas; // Permite acceder a la lista de reservas
     }
+
     Empresa empresa;
 
     public ReservaController(Empresa empresa) {
         this.empresa = empresa;
     }
 
+    /**
+     * Método para crear un cliente luego de ingresar los datos
+     * 
+     * @param cliente
+     * @return
+     */
     public boolean crearCliente(Cliente cliente) {
         return empresa.agregarCliente(cliente);
     }
@@ -57,11 +86,24 @@ public class ReservaController {
         return empresa.getClientes();
     }
 
+    /**
+     * Método para eliminar un cliente seleccionado
+     * 
+     * @param cedula
+     * @return
+     */
     public boolean eliminarCliente(String cedula) {
-       return empresa.eliminarCliente(cedula);
+        return empresa.eliminarCliente(cedula);
     }
 
+    /**
+     * Método para actualizar un cliente
+     * 
+     * @param cedula
+     * @param cliente
+     * @return
+     */
     public boolean actualizarCliente(String cedula, Cliente cliente) {
-       return empresa.actualizarCliente(cedula, cliente);
+        return empresa.actualizarCliente(cedula, cliente);
     }
 }

@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo.model;
-
+/**
+ * esta es la clase Vehiculo la cual es abstracta 
+ */
 public abstract class Vehiculo {
     public String tipoVehiculo, matricula, marca, modelo;
     public int anioFabricacion;
