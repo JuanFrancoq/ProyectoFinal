@@ -26,7 +26,9 @@ public class ReservaViewController {
     private ObservableList<Reserva> reservas = FXCollections.observableArrayList();
     private Cliente selectedCliente;
 
-    // Campos para Reservas
+    /**
+     * Campos para Reservas
+     */
     @FXML
     private Label lbl_FechaInicio, lbl_FechaFin;
     @FXML
@@ -43,11 +45,13 @@ public class ReservaViewController {
     @FXML
     private TableColumn<Reserva, Double> tbc_Valor;
     @FXML
-    private Button btn_Crear, btn_Eliminar, btn_Actualizar, btn_Calcular;
+    private Button btn_Crear, btn_Eliminar, btn_Actualizar, btn_LimpiarReservas;
     @FXML
     private ImageView imageView;
 
-    // Campos para Clientes
+    /**
+     * Campos para Clientes
+     */
     @FXML
     private TextField txt_Cedula, txt_Nombre, txt_Correo, txt_Telefono;
     @FXML
@@ -55,7 +59,7 @@ public class ReservaViewController {
     @FXML
     private TableColumn<Cliente, String> tbc_CedulaCliente, tbc_NombreCliente, tbc_CorreoCliente, tbc_TelefonoCliente;
     @FXML
-    private Button btn_CrearCliente, btn_EliminarCliente, btn_ActualizarCliente, btn_Limpiar;
+    private Button btn_CrearCliente, btn_EliminarCliente, btn_ActualizarCliente, btn_LimpiarClientes;
 
     @FXML
     private ResourceBundle resources;
@@ -75,22 +79,34 @@ public class ReservaViewController {
         cb_Cliente.setItems(listClientes);
     }
 
-    // ---- Métodos para gestionar la vista de reservas ----
+    /**
+     * Métodos para gestionar la vista de reservas 
+     */
 
     private void initView() {
-        // Traer los datos del cliente a la tabla
+        /**
+         * Traer los datos del cliente a la tabla
+         */
         initDataBinding();
 
-        // Obtiene la lista
+        /**
+         * Obtiene la lista
+         */
         obtenerClientes();
 
-        // Limpiar la tabla
+        /**
+         * Limpiar la tabla
+         */
         tbl_ListClientes.getItems().clear();
 
-        // Agregar los elementos a la tabla
+        /*
+         * Agregar los elementos a la tabla
+         */
         tbl_ListClientes.setItems(listClientes);
 
-        // Seleccionar elemento de la tabla
+        /**
+         * Seleccionar elemento de la tabla
+         */
         listenerSelection();
     }
 
@@ -99,7 +115,6 @@ public class ReservaViewController {
         tbc_NombreCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         tbc_CorreoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
         tbc_TelefonoCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
-        // Usamos SimpleObjectProperty para manejar Double y Integer correctamente
     }
 
     private void initReservaView() {
@@ -118,13 +133,24 @@ public class ReservaViewController {
 
     @FXML
     private void Limpiar(ActionEvent event) {
-        // Tu código aquí
+        limpiarReservas();
     }
 
     @FXML
     private void limpiarReservas() {
         reservas.clear(); // Limpia la lista de reservas
         tbl_ListReservas.refresh(); // Refresca la tabla para mostrar los cambios
+    }
+
+    @FXML
+    private void LimpiarClientes(ActionEvent event) {
+        limpiarClientes();
+    }
+
+    @FXML
+    private void limpiarClientes() {
+        listClientes.clear(); // Limpia la lista de clientes
+        tbl_ListClientes.refresh(); // Refresca la tabla para mostrar los cambios
     }
     /**
      * Método para crear la reservación luego de seleccionar los campos requeridos

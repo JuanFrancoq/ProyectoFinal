@@ -58,7 +58,7 @@
                        <Button fx:id="btn_Crear" layoutX="40.0" layoutY="227.0" mnemonicParsing="false" onAction="#crearReserva" prefHeight="25.0" prefWidth="75.0" text="Crear" />
                        <Button fx:id="btn_Eliminar" layoutX="127.0" layoutY="227.0" mnemonicParsing="false" onAction="#eliminarReserva" prefHeight="25.0" prefWidth="75.0" text="Eliminar" />
                        <Button fx:id="btn_Actualizar" layoutX="214.0" layoutY="227.0" mnemonicParsing="false" onAction="#actualizarReserva" prefHeight="25.0" prefWidth="75.0" text="Actualizar" />
-                       <Button fx:id="btn_LimpiarVehiculo" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Limpiar" />
+                       <Button fx:id="btn_LimpiaReservas" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" onAction="#Limpiar" prefHeight="25.0" prefWidth="75.0" text="Limpiar" />
                        <ImageView fitHeight="202.0" fitWidth="332.0" layoutX="408.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                                <Image url="@Captura%20de%20pantalla%202024-10-29%20104750.png" />
@@ -96,7 +96,7 @@
                                <TableColumn fx:id="tbc_CorreoCliente" prefWidth="200.0" text="Correo" />
                            </columns>
                        </TableView>
-                  <Button fx:id="btn_Limpiar" layoutX="228.0" layoutY="465.0" mnemonicParsing="false" onAction="#Limpiar" prefHeight="25.0" prefWidth="105.0" text="Limpiar" />
+                  <Button fx:id="btn_LimpiarClientes" layoutX="228.0" layoutY="465.0" mnemonicParsing="false" onAction="#LimpiarClientes" prefHeight="25.0" prefWidth="105.0" text="Limpiar" />
                    </children>
                </AnchorPane>
    </content>
