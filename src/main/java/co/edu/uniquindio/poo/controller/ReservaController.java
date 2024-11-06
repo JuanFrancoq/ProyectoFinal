@@ -62,8 +62,13 @@ public class ReservaController {
         throw new IllegalArgumentException("Las fechas de inicio y fin no son válidas");
     }
 
+    /**
+     * Permite acceder a la lista de reservas
+     * @return
+     */
+
     public ObservableList<Reserva> getReservas() {
-        return reservas; // Permite acceder a la lista de reservas
+        return reservas;
     }
 
     Empresa empresa;
