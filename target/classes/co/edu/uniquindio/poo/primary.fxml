@@ -34,7 +34,7 @@
                <Button fx:id="btn_login" onAction="#handleLogin" prefWidth="150.0" style="-fx-background-color: #dcdedc;" text="Ingresar" AnchorPane.topAnchor="270" />
    
                <!-- Texto de enlace para '¿Olvidaste tu contraseña?' -->
-               <Label fx:id="forgotPasswordText" style="-fx-underline: true; -fx-text-fill: #000000; -fx-cursor: hand;" text="¿Olvidaste tu contraseña?" AnchorPane.topAnchor="310" />
+               <Label fx:id="forgotPasswordText" style="-fx-underline: true; -fx-text-fill: #000000; -fx-cursor: hand;" text="¿Olvidaste tu contraseña?" AnchorPane.topAnchor="310" onMouseClicked="#handleForgotPassword" />
            </children>
         </VBox>
 

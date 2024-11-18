@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 import co.edu.uniquindio.poo.App;
 import co.edu.uniquindio.poo.controller.EmpresaController;
 import co.edu.uniquindio.poo.model.Cliente;
-import co.edu.uniquindio.poo.model.Reserva;
+
 import co.edu.uniquindio.poo.model.Vehiculo;
 
 public class ClienteViewController {
@@ -28,29 +28,9 @@ public class ClienteViewController {
     private App app;
     private EmpresaController empresaController;
     private ObservableList<Cliente> listClientes = FXCollections.observableArrayList();
-    private ObservableList<Reserva> reservas = FXCollections.observableArrayList();
     private Cliente selectedCliente;
 
-    /**
-     * Campos para Reservas
-     */
-    @FXML
-    private Label lbl_FechaInicio, lbl_FechaFin;
-    @FXML
-    private ChoiceBox<Cliente> cb_Cliente;
-    @FXML
-    private ChoiceBox<Vehiculo> cb_Modelo;
-    @FXML
-    private DatePicker datePickerInicio, datePickerFin;
-    @FXML
-    private TableView<Reserva> tbl_ListReservas;
-    @FXML
-    private TableColumn<Reserva, String> tbc_Fecha, tbc_Cedula, tbc_Nombre, tbc_Telefono, tbc_TipoVehiculo, tbc_Marca,
-            tbc_Modelo, tbc_Matricula;
-    @FXML
-    private TableColumn<Reserva, Double> tbc_Valor;
-    @FXML
-    private Button btn_Crear, btn_Eliminar, btn_Actualizar, btn_LimpiarReservas;
+   
     @FXML
     private ImageView imageView;
 
@@ -76,12 +56,11 @@ public class ClienteViewController {
         empresaController = new EmpresaController(app.empresa);
 
         // Inicializar tablas y ChoiceBox
-        initReservaView();
+
         initClienteView();
 
         // Cargar datos de clientes y llenar ChoiceBox
         obtenerClientes();
-        cb_Cliente.setItems(listClientes);
     }
 
     /**
@@ -125,30 +104,7 @@ public class ClienteViewController {
         tbc_ClaveCliente.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClave()));
     }
 
-    private void initReservaView() {
-        tbc_Fecha.setCellValueFactory(new PropertyValueFactory<>("fechaInicio"));
-        tbc_Cedula.setCellValueFactory(new PropertyValueFactory<>("cedulaCliente"));
-        tbc_Nombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        tbc_Telefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-        tbc_TipoVehiculo.setCellValueFactory(new PropertyValueFactory<>("tipoVehiculo"));
-        tbc_Marca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-        tbc_Modelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        tbc_Matricula.setCellValueFactory(new PropertyValueFactory<>("matricula"));
-        tbc_Valor.setCellValueFactory(new PropertyValueFactory<>("valorReserva"));
-
-        tbl_ListReservas.setItems(reservas);
-    }
-
-    @FXML
-    private void Limpiar(ActionEvent event) {
-        limpiarReservas();
-    }
-
-    @FXML
-    private void limpiarReservas() {
-        reservas.clear(); // Limpia la lista de reservas
-        tbl_ListReservas.refresh(); // Refresca la tabla para mostrar los cambios
-    }
+   
 
     @FXML
     private void LimpiarClientes(ActionEvent event) {
@@ -160,101 +116,8 @@ public class ClienteViewController {
         listClientes.clear(); // Limpia la lista de clientes
         tbl_ListClientes.refresh(); // Refresca la tabla para mostrar los cambios
     }
-    /**
-     * Método para crear la reservación luego de seleccionar los campos requeridos
-     */
-    @FXML
-    private void crearReserva() {
-        LocalDate fechaInicio = datePickerInicio.getValue();
-        LocalDate fechaFin = datePickerFin.getValue();
-        Cliente cliente = cb_Cliente.getValue();
-        Vehiculo vehiculo = cb_Modelo.getValue();
+    
 
-        if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
-            double valorReserva = calcularValorReserva(fechaInicio, fechaFin);
-            Reserva reserva = new Reserva(fechaInicio, fechaFin, cliente, vehiculo);
-            reservas.add(reserva);
-            tbl_ListReservas.refresh();
-        } else {
-            System.out.println("Por favor completa todos los campos");
-        }
-    }
-    /**
-     * Método para eliminar una reservación luego de seleccionarla
-     */
-    @FXML
-    private void eliminarReserva() {
-        Reserva selectedReserva = tbl_ListReservas.getSelectionModel().getSelectedItem();
-        if (selectedReserva != null) {
-            reservas.remove(selectedReserva);
-        } else {
-            System.out.println("Seleccione una reserva para eliminar.");
-        }
-    }
-    /**
-     * Método para actualizar una reservación luego de seleccionarla 
-     */
-    @FXML
-    private void actualizarReserva() {
-        Reserva selectedReserva = tbl_ListReservas.getSelectionModel().getSelectedItem();
-
-        if (selectedReserva != null) {
-            LocalDate fechaInicio = datePickerInicio.getValue();
-            LocalDate fechaFin = datePickerFin.getValue();
-            Cliente cliente = cb_Cliente.getValue();
-            Vehiculo vehiculo = cb_Modelo.getValue();
-
-            if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
-                // Actualizar la reserva con los nuevos valores
-                selectedReserva.setFechaInicio(fechaInicio);
-                selectedReserva.setFechaFin(fechaFin);
-                selectedReserva.setCliente(cliente);
-                selectedReserva.setVehiculo(vehiculo);
-
-                // Calcular los días entre las fechas
-                int dias = (int) (fechaFin.toEpochDay() - fechaInicio.toEpochDay());
-
-                // Calcular el valor de la reserva usando el método del vehículo
-                double valorReserva = vehiculo.calcularTarifa(dias);
-                selectedReserva.setValorReserva(valorReserva);
-
-                // Actualizar la tabla
-                tbl_ListReservas.refresh();
-            } else {
-                System.out.println("Por favor completa todos los campos.");
-            }
-        } else {
-            System.out.println("Seleccione una reserva para actualizar.");
-        }
-    }
-    /**
-     * Método para calcular el valor de la reservación
-     */
-    @FXML
-    private void calcularReserva() {
-        LocalDate fechaInicio = datePickerInicio.getValue();
-        LocalDate fechaFin = datePickerFin.getValue();
-        if (fechaInicio != null && fechaFin != null) {
-            double valor = calcularValorReserva(fechaInicio, fechaFin);
-            System.out.println("El valor de la reserva es: " + valor);
-        } else {
-            System.out.println("Selecciona fechas de inicio y fin.");
-        }
-    }
-
-    private double calcularValorReserva(LocalDate fechaInicio, LocalDate fechaFin) {
-        long dias = fechaFin.toEpochDay() - fechaInicio.toEpochDay();
-        return dias * 10000;
-    }
-
-    public void setClientes(ObservableList<Cliente> clientes) {
-        listClientes.setAll(clientes);
-        cb_Cliente.setItems(listClientes);
-    }
-
-    public void setVehiculos(ObservableList<Vehiculo> vehiculos) {
-        cb_Modelo.setItems(vehiculos);
-    }
     //-----------------------------------------------------------------------------------------------------------------------------------------------------
     // ---- Métodos para gestionar la vista de clientes ----
 

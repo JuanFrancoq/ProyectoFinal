@@ -2,6 +2,7 @@ module co.edu.uniquindio.poo {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires java.mail;
     
 
 

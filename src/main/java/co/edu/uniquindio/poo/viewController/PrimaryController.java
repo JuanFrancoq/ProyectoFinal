@@ -6,10 +6,22 @@ import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import co.edu.uniquindio.poo.App;
 import co.edu.uniquindio.poo.model.Cliente;
 import co.edu.uniquindio.poo.model.Empleado;
 import javafx.event.ActionEvent;
+
 
 public class PrimaryController {
 
@@ -119,5 +131,65 @@ public class PrimaryController {
     @FXML
     void initialize(){
         // Puedes usar este método si necesitas inicializar otros componentes
+    }
+    @FXML
+    public void handleForgotPassword(ActionEvent event) {
+        String email = emailField.getText();
+
+        // Aquí deberías verificar si el correo existe en tu base de datos
+        String password = getPasswordByEmail(email); // Método que obtiene la contraseña
+
+        if (password != null) {
+            sendPasswordResetEmail(email, password);
+        } else {
+            // Aquí puedes mostrar un mensaje de error si el correo no se encuentra registrado
+            System.out.println("Correo no encontrado en el sistema");
+        }
+    }
+
+    // Método que obtiene la contraseña de la base de datos (simulado aquí)
+    private String getPasswordByEmail(String email) {
+        // Este es un ejemplo; deberías consultar tu base de datos para obtener la contraseña real
+        if ("admin".equals(email)) {
+            return "admin"; // contraseña ficticia
+        }
+        return null;
+    }
+
+    // Método para enviar el correo con la contraseña
+    private void sendPasswordResetEmail(String toEmail, String password) {
+        String fromEmail = "juanj.francoq@uqvirtual.edu.co"; // Dirección de correo del servidor
+        String host = "smtp.gmail.com"; // Servidor SMTP (ajusta según tu proveedor)
+
+        // Configurar las propiedades para el correo
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "587"); // Puerto de Gmail (sin SSL)
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true"); // Habilitar STARTTLS
+
+        // Crear sesión con autenticación
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("juanj.francoq@uqvirtual.edu.co", "Locolauncho0915"); // Cambiar con tus credenciales
+            }
+        });
+
+        try {
+            // Crear el mensaje
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+            message.setSubject("Recuperación de contraseña");
+            message.setText("Hola, tu contraseña es: " + password);
+
+            // Enviar el mensaje
+            Transport.send(message);
+            System.out.println("Correo enviado correctamente");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 }

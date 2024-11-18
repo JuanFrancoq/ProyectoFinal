@@ -1,87 +1,89 @@
 package co.edu.uniquindio.poo.model;
-/**
- * esta es la clase Vehiculo la cual es abstracta 
- */
+
 public abstract class Vehiculo {
-    public String tipoVehiculo, matricula, marca, modelo;
-    public int anioFabricacion;
-    public double tarifaBase;
-
-    /**
-     * Metodo constructor para la clase vehiculo
-     * 
-     * @param tipoVehiculo
-     * @param matricula
-     * @param marca
-     * @param modelo
-     * @param anioFabricacion
-     * @param tarifaBase
-     */
-
-    public String getTipoVehiculo() {
-        return tipoVehiculo;
-    }
-
-    public Vehiculo(String tipoVehiculo, String matricula, String marca, String modelo, int anioFabricacion,
-            double tarifaBase) {
-        this.tipoVehiculo = tipoVehiculo;
-        this.matricula = matricula;
+    private String marca, modelo, tipoVehiculo, placa;
+    private boolean nuevo, revisionTecnica;
+    private int cambios;
+    private double velocidadMax, cilindraje;
+    private TipoTransmision TipoTransmision;
+    public Vehiculo(String marca, String modelo, String tipoVehiculo, String placa, boolean nuevo, boolean revisionTecnica, int cambios, double velocidadMax, double cilindraje, TipoTransmision tipoTransmision) {
         this.marca = marca;
         this.modelo = modelo;
-        this.anioFabricacion = anioFabricacion;
-        this.tarifaBase = tarifaBase;
-    }
-
-    public void setTipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
+        this.placa = placa;
+        this.nuevo = nuevo;
+        this.revisionTecnica = revisionTecnica;
+        this.cambios = cambios;
+        this.velocidadMax = velocidadMax;
+        this.cilindraje = cilindraje;
+        TipoTransmision = tipoTransmision;
     }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
     public String getMarca() {
         return marca;
     }
-
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
     public String getModelo() {
         return modelo;
     }
-
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
-    public int getAnioFabricacion() {
-        return anioFabricacion;
+    public String getTipoVehiculo() {
+        return tipoVehiculo;
     }
-
-    public void setAnioFabricacion(int anioFabricacion) {
-        this.anioFabricacion = anioFabricacion;
+    public void setTipoVehiculo(String tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
     }
-
-    public double getTarifaBase() {
-        return tarifaBase;
+    public String getPlaca() {
+        return placa;
     }
-
-    public void setTarifaBase(double tarifaBase) {
-        this.tarifaBase = tarifaBase;
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
-
-    public abstract double calcularTarifa(int dias);
-
+    public boolean isNuevo() {
+        return nuevo;
+    }
+    public void setNuevo(boolean nuevo) {
+        this.nuevo = nuevo;
+    }
+    public boolean isRevisionTecnica() {
+        return revisionTecnica;
+    }
+    public void setRevisionTecnica(boolean revisionTecnica) {
+        this.revisionTecnica = revisionTecnica;
+    }
+    public int getCambios() {
+        return cambios;
+    }
+    public void setCambios(int cambios) {
+        this.cambios = cambios;
+    }
+    public double getVelocidadMax() {
+        return velocidadMax;
+    }
+    public void setVelocidadMax(double velocidadMax) {
+        this.velocidadMax = velocidadMax;
+    }
+    public double getCilindraje() {
+        return cilindraje;
+    }
+    public void setCilindraje(double cilindraje) {
+        this.cilindraje = cilindraje;
+    }
+    public TipoTransmision getTipoTransmision() {
+        return TipoTransmision;
+    }
+    public void setTipoTransmision(TipoTransmision tipoTransmision) {
+        TipoTransmision = tipoTransmision;
+    }
     @Override
     public String toString() {
-        return "Vehiculo [tipoVehiculo=" + tipoVehiculo + ", matricula=" + matricula + ", marca=" + marca + ", modelo="
-                + modelo + ", anioFabricacion=" + anioFabricacion + ", tarifaBase=" + tarifaBase + "]";
+        return "Vehiculo [marca=" + marca + ", modelo=" + modelo + ", tipoVehiculo=" + tipoVehiculo + ", placa=" + placa
+                + ", nuevo=" + nuevo + ", revisionTecnica=" + revisionTecnica + ", cambios=" + cambios
+                + ", velocidadMax=" + velocidadMax + ", cilindraje=" + cilindraje + ", TipoTransmision="
+                + TipoTransmision + "]";
     }
-
+   
 }

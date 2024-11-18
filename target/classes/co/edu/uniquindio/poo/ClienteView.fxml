@@ -8,12 +8,46 @@
 
 <TabPane prefHeight="575.0" prefWidth="1134.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.viewController.ClienteViewController">
     <tabs>
+        <Tab text="Reservas">
+           <content>
+               <AnchorPane prefHeight="581.0" prefWidth="761.0">
+                   <children>
+                       <Label layoutX="28.0" layoutY="14.0" text="Consulta de Transacciones por Cedula" textFill="#3d8b3d">
+                           <font>
+                               <Font name="System Bold" size="21.0" />
+                           </font>
+                       </Label>
+                       <TableView fx:id="tbl_ListReservas" layoutX="168.0" layoutY="212.0" prefHeight="270.0" prefWidth="840.0">
+                           <columns>
+                               <TableColumn fx:id="tbc_Fecha" prefWidth="104.0" text="Fecha Solicitud" />
+                               <TableColumn fx:id="tbc_Cedula" prefWidth="94.0" text="Cédula Cliente" />
+                               <TableColumn fx:id="tbc_Nombre" prefWidth="86.0" text="Nombre" />
+                               <TableColumn fx:id="tbc_Telefono" prefWidth="92.0" text="Teléfono" />
+                               <TableColumn fx:id="tbc_TipoVehiculo" prefWidth="92.0" text="Vehículo" />
+                               <TableColumn fx:id="tbc_Marca" prefWidth="88.0" text="Marca" />
+                               <TableColumn fx:id="tbc_Modelo" prefWidth="76.0" text="Modelo" />
+                               <TableColumn fx:id="tbc_Matricula" prefWidth="69.0" text="Matrícula" />
+                               <TableColumn fx:id="tbc_Valor" prefWidth="89.0" text="Valor " />
+                           </columns>
+                       </TableView>
+                       <ImageView fitHeight="172.0" fitWidth="167.0" layoutX="978.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                               <Image url="@logoUQ.png" />
+                           </image>
+                       </ImageView>
+                  <TextField fx:id="txt_CedulaConsulta" layoutX="428.0" layoutY="86.0" prefHeight="30.0" prefWidth="140.0" promptText="Cedula Cliente" />
+                  <Button fx:id="btn_Consultar" layoutX="606.0" layoutY="86.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3d8b3d;" text="Consultar" textFill="WHITE" />
+                  <Button fx:id="btn_Atras" layoutX="498.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #3d8b3d;" text="Atras" textFill="WHITE" />
+                   </children>
+               </AnchorPane>
+           </content>
+        </Tab>
 
-        <Tab text="Clientes">
+        <Tab text="Ventas">
    <content>
                <AnchorPane prefHeight="546.0" prefWidth="1157.0">
                    <children>
-                       <Label layoutX="20.0" layoutY="20.0" text="Gestión de Clientes">
+                       <Label layoutX="20.0" layoutY="20.0" text="Gestión de Venta de Vehiculo" textFill="#3d8b3d">
                            <font>
                                <Font name="System Bold" size="18.0" />
                            </font>
@@ -24,9 +58,9 @@
                        <TextField fx:id="txt_Telefono" layoutX="440.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Teléfono Cliente" />
                        <TextField fx:id="txt_Correo" layoutX="580.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Correo Cliente" />
    
-                       <Button fx:id="btn_CrearCliente" layoutX="508.0" layoutY="103.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Crear Cliente" textFill="WHITE" />
-                       <Button fx:id="btn_ActualizarCliente" layoutX="183.0" layoutY="103.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Actualizar Cliente" textFill="WHITE" />
-                       <Button fx:id="btn_EliminarCliente" layoutX="780.0" layoutY="103.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Eliminar Cliente" textFill="WHITE" />
+                       <Button fx:id="btn_CrearCliente" layoutX="508.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Crear Cliente" textFill="WHITE" />
+                       <Button fx:id="btn_ActualizarCliente" layoutX="183.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Actualizar Cliente" textFill="WHITE" />
+                       <Button fx:id="btn_EliminarCliente" layoutX="780.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Eliminar Cliente" textFill="WHITE" />
    
                        <TableView fx:id="tbl_ListClientes" layoutX="20.0" layoutY="150.0" prefHeight="315.0" prefWidth="987.0">
                            <columns>
@@ -39,7 +73,7 @@
                         <TableColumn fx:id="tbc_ClaveCliente" prefWidth="129.0" text="Clave" />
                            </columns>
                        </TableView>
-                  <Button fx:id="btn_LimpiarClientes" layoutX="658.0" layoutY="482.0" mnemonicParsing="false" onAction="#LimpiarClientes" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Limpiar" textFill="WHITE" />
+                  <Button fx:id="btn_LimpiarClientes" layoutX="658.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Limpiar" textFill="WHITE" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="991.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@logoUQ.png" />
@@ -52,66 +86,6 @@
                    </children>
                </AnchorPane>
    </content>
-        </Tab>
-        <Tab text="Reservas">
-           <content>
-               <AnchorPane prefHeight="581.0" prefWidth="761.0">
-                   <children>
-                       <Label layoutX="331.0" layoutY="14.0" text="Reserva">
-                           <font>
-                               <Font name="System Bold" size="21.0" />
-                           </font>
-                       </Label>
-   
-                       <DatePicker fx:id="datePickerInicio" layoutX="40.0" layoutY="59.0" />
-                       <DatePicker fx:id="datePickerFin" layoutX="40.0" layoutY="101.0" />
-                       <Label fx:id="lbl_FechaInicio" layoutX="232.0" layoutY="61.0" text="Fecha Inicio">
-                           <font>
-                               <Font size="15.0" />
-                           </font>
-                       </Label>
-                       <Label fx:id="lbl_FechaFin" layoutX="232.0" layoutY="103.0" text="Fecha Fin">
-                           <font>
-                               <Font size="15.0" />
-                           </font>
-                       </Label>
-                       <ChoiceBox fx:id="cb_Cliente" layoutX="40.0" layoutY="142.0" prefHeight="25.0" prefWidth="174.0" />
-                       <ChoiceBox fx:id="cb_Modelo" layoutX="40.0" layoutY="187.0" prefHeight="25.0" prefWidth="174.0" />
-                       <Label fx:id="lbl_Clientes" layoutX="232.0" layoutY="144.0" text="Seleccionar Cliente">
-                           <font>
-                               <Font size="15.0" />
-                           </font>
-                       </Label>
-                       <Label fx:id="lbl_Vehiculo" layoutX="232.0" layoutY="189.0" text="Seleccionar Vehículo">
-                           <font>
-                               <Font size="15.0" />
-                           </font>
-                       </Label>
-                       <TableView fx:id="tbl_ListReservas" layoutX="7.0" layoutY="262.0" prefHeight="232.0" prefWidth="745.0">
-                           <columns>
-                               <TableColumn fx:id="tbc_Fecha" prefWidth="85.0" text="Fecha Reserva" />
-                               <TableColumn fx:id="tbc_Cedula" prefWidth="87.0" text="Cédula Cliente" />
-                               <TableColumn fx:id="tbc_Nombre" prefWidth="90.0" text="Nombre" />
-                               <TableColumn fx:id="tbc_Telefono" prefWidth="84.0" text="Teléfono" />
-                               <TableColumn fx:id="tbc_TipoVehiculo" prefWidth="75.0" text="Vehículo" />
-                               <TableColumn fx:id="tbc_Marca" prefWidth="90.0" text="Marca" />
-                               <TableColumn fx:id="tbc_Modelo" prefWidth="81.0" text="Modelo" />
-                               <TableColumn fx:id="tbc_Matricula" prefWidth="62.0" text="Matrícula" />
-                               <TableColumn fx:id="tbc_Valor" prefWidth="90.0" text="Valor Reserva" />
-                           </columns>
-                       </TableView>
-                       <Button fx:id="btn_Crear" layoutX="40.0" layoutY="227.0" mnemonicParsing="false" onAction="#crearReserva" prefHeight="25.0" prefWidth="75.0" text="Crear" />
-                       <Button fx:id="btn_Eliminar" layoutX="127.0" layoutY="227.0" mnemonicParsing="false" onAction="#eliminarReserva" prefHeight="25.0" prefWidth="75.0" text="Eliminar" />
-                       <Button fx:id="btn_Actualizar" layoutX="214.0" layoutY="227.0" mnemonicParsing="false" onAction="#actualizarReserva" prefHeight="25.0" prefWidth="75.0" text="Actualizar" />
-                       <Button fx:id="btn_LimpiaReservas" layoutX="301.0" layoutY="227.0" mnemonicParsing="false" onAction="#Limpiar" prefHeight="25.0" prefWidth="75.0" text="Limpiar" />
-                       <ImageView fitHeight="202.0" fitWidth="332.0" layoutX="408.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                               <Image url="@logoUQ.png" />
-                           </image>
-                       </ImageView>
-                   </children>
-               </AnchorPane>
-           </content>
         </Tab>
     </tabs>
 </TabPane>

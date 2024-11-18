@@ -1,60 +1,9 @@
 package co.edu.uniquindio.poo.model;
 
-/**
- * Esta es la clase de Moto la cual hereda de la clase Vehiculo
- */
+public class Moto extends VehiculoComb {
 
-public class Moto extends Vehiculo {
-    private TipoCaja TipoCaja;
-
-    /**
-     * Constructor de la clase Moto
-     * 
-     * @param tipoVehiculo
-     * @param matricula
-     * @param marca
-     * @param modelo
-     * @param anioFabricacion
-     * @param tarifaBase
-     * @param tipoCaja
-     */
-
-    public Moto(String tipoVehiculo, String matricula, String marca, String modelo, int anioFabricacion,
-            double tarifaBase, co.edu.uniquindio.poo.model.TipoCaja tipoCaja) {
-        super(tipoVehiculo, matricula, marca, modelo, anioFabricacion, tarifaBase);
-        TipoCaja = tipoCaja;
-    }
-
-    public TipoCaja getTipoCaja() {
-        return TipoCaja;
-    }
-
-    public void setTipoCaja(TipoCaja tipoCaja) {
-        TipoCaja = tipoCaja;
-    }
-
-    /**
-     * Metodo para calcular la tarifa de la reserva para una moto
-     * 
-     * @param dias
-     * @param tipoCaja
-     * @return
-     */
-    
-    @Override
-    public double calcularTarifa(int dias) {
-        double costo = getTarifaBase() * dias;
-        if (getTipoCaja() == TipoCaja.AUTOMATICA) {
-            costo += 50000;
-        }
-        return costo;
-    }
-
-    @Override
-    public String toString() {
-        return "Moto [tipoVehiculo=" + tipoVehiculo + ", matricula=" + matricula + ", marca=" + marca + ", modelo="
-                + modelo + ", anioFabricacion=" + anioFabricacion + ", TipoCaja=" + TipoCaja + ", tarifaBase="
-                + tarifaBase + "]";
+    public Moto (String marca, String modelo, String tipoVehiculo, String placa, boolean nuevo, boolean revisionTecnica, int cambios, double velocidadMax, double cilindraje, co.edu.uniquindio.poo.model.TipoTransmision tipoTransmision, TipoCombustible tipoCombustible) {
+        super(marca, modelo, tipoVehiculo, placa, nuevo, revisionTecnica, cambios, velocidadMax, cilindraje, tipoTransmision, tipoCombustible);
     }
 
 }
