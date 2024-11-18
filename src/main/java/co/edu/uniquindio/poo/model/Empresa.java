@@ -10,20 +10,26 @@ public class Empresa {
 
     private String nombre;
     private Collection<Cliente> clientes;
-    private ObservableList<Vehiculo> vehiculos;
+    private Collection<Empleado> empleados;
+    private Collection<Vehiculo> vehiculos;
 
     /**
      * Metodo constructor de la clase Empresa
+     * 
      * @param nombre
      */
+
     public Empresa(String nombre) {
         this.nombre = nombre;
         clientes = new LinkedList<>();
-        this.vehiculos = FXCollections.observableArrayList();
+        empleados = new LinkedList<>();
+        vehiculos = new LinkedList<>();
+
     }
 
     /**
      * Método para agregar un cliente
+     * 
      * @param cliente
      */
     public boolean agregarCliente(Cliente cliente) {
@@ -34,8 +40,10 @@ public class Empresa {
         }
         return centinela;
     }
+
     /**
      * Metodo para eliminar un cliente
+     * 
      * @param cedula
      * @return
      */
@@ -50,8 +58,10 @@ public class Empresa {
         }
         return centinela;
     }
+
     /**
      * Metodo para actualizar los datos de un cliente
+     * 
      * @param cedula
      * @param actualizado
      * @return
@@ -64,14 +74,19 @@ public class Empresa {
                 cliente.setNombre(actualizado.getNombre());
                 cliente.setCorreo(actualizado.getCorreo());
                 cliente.setTelefono(actualizado.getTelefono());
+                cliente.setApellido(actualizado.getApellido());
+                cliente.setDireccion(actualizado.getDireccion());
+                cliente.setClave(actualizado.getClave());
                 centinela = true;
                 break;
             }
         }
         return centinela;
     }
+
     /**
      * Metodo para verificar un cliente y no se repita en la lista
+     * 
      * @param cedula
      * @return
      */
@@ -84,28 +99,69 @@ public class Empresa {
         }
         return centinela;
     }
+
+    public boolean agregarEmpleado(Empleado empleado) {
+        boolean centinela = false;
+        if (!verificarEmpleado(empleado.getCedula())) {
+            empleados.add(empleado);
+            centinela = true;
+        }
+        return centinela;
+    }
+
+    public boolean eliminarEmpleado(String cedula) {
+        boolean centinela = false;
+        for (Empleado empleado : empleados) {
+            if (empleado.getCedula().equals(cedula)) {
+                empleados.remove(empleado);
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
+    public boolean actualizarEmpleado(String cedula, Empleado actualizado) {
+        boolean centinela = false;
+        for (Empleado empleado : empleados) {
+            if (empleado.getCedula().equals(cedula)) {
+                empleado.setCedula(actualizado.getCedula());
+                empleado.setNombre(actualizado.getNombre());
+                empleado.setCorreo(actualizado.getCorreo());
+                empleado.setTelefono(actualizado.getTelefono());
+                empleado.setApellido(actualizado.getApellido());
+                empleado.setDireccion(actualizado.getDireccion());
+                empleado.setClave(actualizado.getClave());
+                empleado.setSalario(actualizado.getSalario());
+                centinela = true;
+                break;
+            }
+        }
+        return centinela;
+    }
+
     /**
-     * Método para agregar un vehículo
-     * @param vehiculo
+     * Metodo para verificar un cliente y no se repita en la lista
+     * 
+     * @param cedula
+     * @return
      */
+    public boolean verificarEmpleado(String cedula) {
+        boolean centinela = false;
+        for (Empleado empleado : empleados) {
+            if (empleado.getCedula().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
     public void agregarVehiculo(Vehiculo vehiculo) {
         vehiculos.add(vehiculo);
     }
 
-    /**
-     * Obtener la lista de clientes
-     * @return
-     */
     public Collection<Cliente> getClientes() {
         return clientes;
-    }
-
-    /**
-     * Obtener la lista de vehículos
-     * @return
-     */
-    public ObservableList<Vehiculo> getVehiculos() {
-        return vehiculos;
     }
 
     public String getNombre() {
@@ -124,5 +180,24 @@ public class Empresa {
         this.vehiculos = vehiculos;
     }
 
-    
+    public void setClientes(Collection<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public Collection<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(Collection<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
+    public Collection<Vehiculo> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(Collection<Vehiculo> vehiculos) {
+        this.vehiculos = vehiculos;
+    }
+
 }

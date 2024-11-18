@@ -1,6 +1,9 @@
 module co.edu.uniquindio.poo {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
+    
+
 
     exports co.edu.uniquindio.poo;
     exports co.edu.uniquindio.poo.model;

@@ -1,31 +1,33 @@
 package co.edu.uniquindio.poo.controller;
 
 import javafx.collections.ObservableList;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import co.edu.uniquindio.poo.model.Cliente;
+import co.edu.uniquindio.poo.model.Empleado;
 import co.edu.uniquindio.poo.model.Empresa;
 import co.edu.uniquindio.poo.model.Reserva;
 import co.edu.uniquindio.poo.model.Vehiculo;
 
-public class ReservaController {
+public class EmpresaController {
 
     private ObservableList<Reserva> reservas;
 
-    public ReservaController(ObservableList<Reserva> reservas) {
+    public EmpresaController(ObservableList<Reserva> reservas) {
         this.reservas = reservas;
     }
 
-    /**
-     * Método para crear una reservación
-     * 
-     * @param fechaInicio
-     * @param fechaFin
-     * @param cliente
-     * @param vehiculo
-     * @return
-     */
+    
     public boolean crearReserva(LocalDate fechaInicio, LocalDate fechaFin, Cliente cliente, Vehiculo vehiculo) {
         if (fechaInicio != null && fechaFin != null && cliente != null && vehiculo != null) {
             double tarifaBase = calcularValorReserva(fechaInicio, fechaFin);
@@ -36,23 +38,12 @@ public class ReservaController {
         return false; // No se pudo crear la reserva
     }
 
-    /**
-     * Método para eliminar una reservación
-     * 
-     * @param reserva
-     * @return
-     */
+    
     public boolean eliminarReserva(Reserva reserva) {
         return reservas.remove(reserva); // Devuelve true si se eliminó correctamente
     }
 
-    /**
-     * Método para calcular el valor de una reservación
-     * 
-     * @param fechaInicio
-     * @param fechaFin
-     * @return
-     */
+    
     public double calcularValorReserva(LocalDate fechaInicio, LocalDate fechaFin) {
         if (fechaInicio != null && fechaFin != null && fechaInicio.isBefore(fechaFin)) {
             long dias = fechaFin.toEpochDay() - fechaInicio.toEpochDay();
@@ -62,27 +53,18 @@ public class ReservaController {
         throw new IllegalArgumentException("Las fechas de inicio y fin no son válidas");
     }
 
-    /**
-     * Permite acceder a la lista de reservas
-     * @return
-     */
-
+    
     public ObservableList<Reserva> getReservas() {
         return reservas;
     }
 
     Empresa empresa;
 
-    public ReservaController(Empresa empresa) {
+    public EmpresaController(Empresa empresa) {
         this.empresa = empresa;
     }
 
-    /**
-     * Método para crear un cliente luego de ingresar los datos
-     * 
-     * @param cliente
-     * @return
-     */
+    
     public boolean crearCliente(Cliente cliente) {
         return empresa.agregarCliente(cliente);
     }
@@ -91,24 +73,49 @@ public class ReservaController {
         return empresa.getClientes();
     }
 
-    /**
-     * Método para eliminar un cliente seleccionado
-     * 
-     * @param cedula
-     * @return
-     */
     public boolean eliminarCliente(String cedula) {
         return empresa.eliminarCliente(cedula);
     }
 
-    /**
-     * Método para actualizar un cliente
-     * 
-     * @param cedula
-     * @param cliente
-     * @return
-     */
     public boolean actualizarCliente(String cedula, Cliente cliente) {
         return empresa.actualizarCliente(cedula, cliente);
     }
+    public boolean crearEmpleado(Empleado empleado) {
+        return empresa.agregarEmpleado(empleado);
+    }
+
+    public Collection<Empleado> obtenerListaEmpleados() {
+        return empresa.getEmpleados();
+    }
+
+    public boolean eliminarEmpleado(String cedula) {
+        return empresa.eliminarEmpleado(cedula);
+    }
+
+    public boolean actualizarEmpleado(String cedula, Empleado empleado) {
+        return empresa.actualizarEmpleado(cedula, empleado);
+    }
+    public void guardarClienteEnArchivo(Cliente cliente) {
+    String rutaArchivo = "src\\main\\java\\co\\edu\\uniquindio\\poo\\data\\clientes.txt";
+    File archivo = new File(rutaArchivo);
+
+    try {
+        // Crear archivo si no existe
+        if (!archivo.exists()) {
+            archivo.createNewFile();
+        }
+
+        // Usamos BufferedWriter para escribir en el archivo
+        BufferedWriter writer = new BufferedWriter(new FileWriter(archivo, true));
+
+        // Escribir los datos del cliente en el archivo (por ejemplo, cedula, nombre, apellido, etc.)
+        writer.write(cliente.getCedula() + "," + cliente.getNombre() + "," + cliente.getApellido() + ","
+                + cliente.getTelefono() + "," + cliente.getCorreo() + "," + cliente.getDireccion() + "\n");
+
+        // Cerrar el archivo
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 }

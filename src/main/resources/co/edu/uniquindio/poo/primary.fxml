@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.viewController.PrimaryController">
-   <children>
-      <Label text="Bienvenidos a FULLGAS" />
-      <Button fx:id="primaryButton" onAction="#onOpenCrudReserva" text="Iniciar Reservación" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<?import co.edu.uniquindio.poo.viewController.PrimaryController?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.viewController.PrimaryController">
+    <children>
+        <!-- Panel izquierdo para el formulario de inicio de sesión -->
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #2f8133;" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0">
+           <children>
+               <!-- Posición del Label "Iniciar Sesión" en la mitad entre la ventana y el Label "Usuario" -->
+               <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Iniciar Sesión" textAlignment="CENTER" textFill="WHITE" AnchorPane.topAnchor="50" />
+               <Label style="-fx-font-size: 14px; -fx-padding: 10px 0 0 0;" text="Correo Electronico" textFill="WHITE" AnchorPane.topAnchor="100" />
+               <TextField fx:id="emailField" promptText="Ingrese su correo electronico" AnchorPane.topAnchor="120" />
+               <Label style="-fx-font-size: 14px; -fx-padding: 10px 0 0 0;" text="Contraseña" textFill="WHITE" AnchorPane.topAnchor="160" />
+               <PasswordField fx:id="passwordField" promptText="Ingrese su contraseña" AnchorPane.topAnchor="180" />
+               <HBox alignment="CENTER_LEFT" spacing="5" AnchorPane.topAnchor="220">
+                  <children>
+                      <CheckBox text="Ver Contraseña" textFill="WHITE" />
+                  </children>
+               </HBox>
+               <!-- Posición del botón "Ingresar" en la mitad entre el PasswordField y el límite inferior de la ventana -->
+               <Button fx:id="btn_login" onAction="#handleLogin" prefWidth="150.0" style="-fx-background-color: #dcdedc;" text="Ingresar" AnchorPane.topAnchor="270" />
+   
+               <!-- Texto de enlace para '¿Olvidaste tu contraseña?' -->
+               <Label fx:id="forgotPasswordText" style="-fx-underline: true; -fx-text-fill: #000000; -fx-cursor: hand;" text="¿Olvidaste tu contraseña?" AnchorPane.topAnchor="310" />
+           </children>
+        </VBox>
+
+        <!-- Panel derecho para el logo y texto adicional -->
+        <VBox alignment="CENTER" layoutX="300.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: 91ba93;" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+           <children>
+               <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="50">
+                   <image>
+                       <Image url="@logoUQ.png" />
+                   </image>
+               </ImageView>
+               <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10px;" text="TU CARRO UQ" textFill="#2f8133" AnchorPane.topAnchor="160" />
+               <Label style="-fx-font-size: 12px;" text="Sistema de gestión de vehículos" textFill="#2f8133" AnchorPane.topAnchor="200" />
+           </children>
+        </VBox>
+    </children>
+</AnchorPane>
