@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo.model;
+    package co.edu.uniquindio.poo.model;
 
 public abstract class Vehiculo {
     private String marca, modelo, tipoVehiculo, placa;

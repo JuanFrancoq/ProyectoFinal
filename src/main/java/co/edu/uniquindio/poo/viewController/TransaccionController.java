@@ -37,7 +37,7 @@ public class TransaccionController {
         double monto = Double.parseDouble(txtMonto.getText());
         String fecha = java.time.LocalDate.now().toString();
 
-        Transaccion transaccion = new Transaccion(LocalDate.of(2024, 11, 18), fecha, null, null, monto)
+        Transaccion transaccion = new Transaccion(LocalDate.of(2024, 11, 18), fecha, null, null, monto);
         parentController.agregarTransaccion(transaccion);
 
         Stage stage = (Stage) txtMonto.getScene().getWindow();

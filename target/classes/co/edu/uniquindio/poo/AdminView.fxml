@@ -105,22 +105,22 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_Cedula11" layoutX="20.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Cédula Cliente" />
-                  <TextField fx:id="txt_Nombre11" layoutX="160.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Nombre Cliente" />
-                  <TextField fx:id="txt_Telefono11" layoutX="440.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Teléfono Cliente" />
-                  <TextField fx:id="txt_Correo11" layoutX="580.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Correo Cliente" />
-                  <Button fx:id="btn_CrearCliente11" layoutX="508.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Crear Cliente" textFill="WHITE" />
-                  <Button fx:id="btn_ActualizarCliente11" layoutX="183.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Actualizar Cliente" textFill="WHITE" />
-                  <Button fx:id="btn_EliminarCliente11" layoutX="780.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Eliminar Cliente" textFill="WHITE" />
+                  <TextField fx:id="txt_Cedula11" layoutX="20.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Tipo Vehiculo" />
+                  <TextField fx:id="txt_Nombre11" layoutX="160.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Marca" />
+                  <TextField fx:id="txt_Telefono11" layoutX="440.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Placa" />
+                  <TextField fx:id="txt_Correo11" layoutX="580.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Velocidad Max" />
+                  <Button fx:id="btn_CrearCliente11" layoutX="508.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Crear Vehiculo" textFill="WHITE" />
+                  <Button fx:id="btn_ActualizarCliente11" layoutX="183.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Actualizar Vehiculo" textFill="WHITE" />
+                  <Button fx:id="btn_EliminarCliente11" layoutX="780.0" layoutY="103.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Eliminar Vehiculo" textFill="WHITE" />
                   <TableView fx:id="tbl_ListClientes11" layoutX="20.0" layoutY="150.0" prefHeight="315.0" prefWidth="987.0">
                      <columns>
-                        <TableColumn fx:id="tbc_CedulaCliente11" prefWidth="136.0" text="Cédula" />
-                        <TableColumn fx:id="tbc_NombreCliente11" prefWidth="136.0" text="Nombre" />
-                        <TableColumn fx:id="tbc_ApellidoCliente11" prefWidth="138.0" text="Apellido" />
-                        <TableColumn fx:id="tbc_TelefonoCliente11" prefWidth="131.0" text="Teléfono" />
-                        <TableColumn fx:id="tbc_CorreoCliente11" prefWidth="159.0" text="Correo" />
-                        <TableColumn fx:id="tbc_DireccionCliente11" prefWidth="157.0" text="Direccion" />
-                        <TableColumn fx:id="tbc_ClaveCliente11" prefWidth="129.0" text="Clave" />
+                        <TableColumn fx:id="tbc_CedulaCliente11" prefWidth="136.0" text="Tipo Vehiculo" />
+                        <TableColumn fx:id="tbc_NombreCliente11" prefWidth="136.0" text="Marca" />
+                        <TableColumn fx:id="tbc_ApellidoCliente11" prefWidth="138.0" text="Cilindraje" />
+                        <TableColumn fx:id="tbc_TelefonoCliente11" prefWidth="131.0" text="Placa" />
+                        <TableColumn fx:id="tbc_CorreoCliente11" prefWidth="159.0" text="Velocidad Max" />
+                        <TableColumn fx:id="tbc_DireccionCliente11" prefWidth="157.0" text="Modelo" />
+                        <TableColumn fx:id="tbc_ClaveCliente11" prefWidth="129.0" text="Valor" />
                      </columns>
                   </TableView>
                   <Button fx:id="btn_LimpiarClientes11" layoutX="658.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Limpiar" textFill="WHITE" />
@@ -129,10 +129,40 @@
                         <Image url="@logoUQ.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txt_Apellido11" layoutX="300.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Apellido Cliente" />
-                  <TextField fx:id="txt_Clave11" layoutX="860.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Clave Cliente" />
-                  <TextField fx:id="txt_Direccion11" layoutX="720.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Direccion Cliente" />
+                  <TextField fx:id="txt_Apellido11" layoutX="300.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Cilindraje" />
+                  <TextField fx:id="txt_Clave11" layoutX="860.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Valor" />
+                  <TextField fx:id="txt_Direccion11" layoutX="720.0" layoutY="60.0" prefHeight="30.0" prefWidth="140.0" promptText="Modelo" />
                   <Button fx:id="btn_Atras" layoutX="325.0" layoutY="482.0" mnemonicParsing="false" onAction="#volverAtras" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Atras" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Registros">
+         <content>
+            <AnchorPane prefHeight="546.0" prefWidth="1157.0">
+               <children>
+                  <Label layoutX="20.0" layoutY="20.0" text="Gestión de Registros" textFill="#3d8b3d">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tbl_ListClientes111" layoutX="108.0" layoutY="85.0" prefHeight="376.0" prefWidth="987.0">
+                     <columns>
+                        <TableColumn fx:id="tbc_CedulaCliente111" prefWidth="136.0" text="Fecha Solicitud" />
+                        <TableColumn fx:id="tbc_NombreCliente111" prefWidth="136.0" text="Cedula Cliente" />
+                        <TableColumn fx:id="tbc_ApellidoCliente111" prefWidth="138.0" text="Nombre Cliente" />
+                        <TableColumn fx:id="tbc_TelefonoCliente111" prefWidth="131.0" text="Empleado" />
+                        <TableColumn fx:id="tbc_CorreoCliente111" prefWidth="159.0" text="Modelo" />
+                        <TableColumn fx:id="tbc_DireccionCliente111" prefWidth="157.0" text="Marca" />
+                        <TableColumn fx:id="tbc_ClaveCliente111" prefWidth="129.0" text="Valor" />
+                     </columns>
+                  </TableView>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1089.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logoUQ.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btn_Atras" layoutX="557.0" layoutY="476.0" mnemonicParsing="false" onAction="#volverAtras" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: #3d8b3d;" text="Atras" textFill="WHITE" />
                </children>
             </AnchorPane>
          </content>
